@@ -1,15 +1,18 @@
 import * as React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useJwt } from "../Context/JwtContext";
+import Button from "@mui/material/Button";
+import AddHomeIcon from "@mui/icons-material/AddHome";
+import { AddFarm } from "./Farm/AddFarm";
 import { useUser } from "../Context/UserContext";
 import { useFarm } from "../Context/FarmContext";
+import { useJwt } from "../Context/JwtContext";
 
 export const Home: React.FC = () => {
-  const { user } = useUser();
   const { jwt } = useJwt();
-  const { updateFarm } = useFarm();
+  const { user } = useUser();
+  const { farm, updateFarm } = useFarm();
+  const [showAddFarm, setShowAddFarm] = React.useState<boolean>(!farm);
 
-  console.log("user ->", user);
   React.useEffect(() => {
     const getFarm = async () => {
       const { farmId } = user;
@@ -30,13 +33,27 @@ export const Home: React.FC = () => {
     getFarm();
   }, []);
 
+  const toggleAddFarm = () => {
+    setShowAddFarm(!showAddFarm);
+  };
+
   if (!user) {
     return <Navigate replace to="/login" />;
   } else {
     return (
-      <div>
-        <p>{`Hello ${user.username}`}</p>
-      </div>
+      <>
+        {showAddFarm && <AddFarm toggleAddFarm={toggleAddFarm} />}
+        {!showAddFarm && (
+          <>
+            <section className="flex justify-center items-center text-xl">
+              <p>Farm Details</p>
+            </section>
+            <section className="p-2.5 bg-slate-100 h-[calc(100vh-84px)] overflow-y-auto relative">
+              <p>{farm.name}</p>
+            </section>
+          </>
+        )}
+      </>
     );
   }
 };

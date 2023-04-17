@@ -1,15 +1,44 @@
 const express = require("express");
 const farmRouter = new express.Router();
 const Farm = require("../models/farm");
+const User = require("../models/user");
 const Livestock = require("../models/livestock");
 const { auth } = require("../middleware/auth");
 
 // Add a new farm
 farmRouter.post("/farms", auth, async (req, res) => {
   try {
-    const farm = new Farm({ ...req.body });
+    const { user } = req;
+
+    const farm = new Farm({ ...req.body, farmers: [user._id] });
+
+    // add farm
     await farm.save();
-    res.status(201).json(farm);
+
+    user.farmId = farm._id;
+
+    // add farmId to the user
+    await user.save();
+
+    const populatedFarm = await Farm.findById(farm._id).populate([
+      {
+        path: "farmers",
+        model: "User",
+        select: "-password -tokens -farmId -createdAt -updatedAt -__v", // excluded fields
+      },
+      {
+        path: "livestock",
+        model: "Livestock",
+      },
+    ]);
+
+    const updatedUser = await User.findById(user._id).select(
+      "-password -tokens -createdAt -updatedAt -__v"
+    );
+
+    console.log("HERE -->", updatedUser);
+
+    res.status(201).json({ user: updatedUser, farm: populatedFarm });
   } catch (e) {
     res.status(400).json({ message: e.message });
   }

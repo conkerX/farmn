@@ -11,8 +11,8 @@ const FarmContext = React.createContext<{
 export const FarmProvider = (props) => {
   const [farm, setFarm, removeFarm] = useLocalStorage("farmn:farm", null);
 
-  const updateFarm = (user: string) => {
-    setFarm(user);
+  const updateFarm = (farm: Farm) => {
+    setFarm(farm);
   };
 
   return (
