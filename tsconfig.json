@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "./dist",
+    "lib": ["es5", "es6", "es2018", "dom", "dom.iterable"],
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["**/**/*"],
+  "exclude": ["node_modules", "./dist"]
+}
