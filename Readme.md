@@ -29,8 +29,4 @@ This will start the application at [http://localhost:3000](http://localhost:3000
 
 If you'd like to contribute to FarmN, please fork this repository and create a new branch for your changes. Once you've made your changes, submit a pull request and we'll review it as soon as possible.
 
-## License
-
-FarmN is licensed under the [MIT License](https://github.com/conkerX/farmn/blob/main/LICENSE). Feel free to use this code however you'd like!
-
 I hope this is helpful!
