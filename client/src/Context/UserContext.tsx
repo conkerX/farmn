@@ -9,7 +9,7 @@ const UserContext = React.createContext<{
 }>(null);
 
 export const UserProvider = (props) => {
-  const [user, setUser, removeUser] = useLocalStorage("my-app:user", null);
+  const [user, setUser, removeUser] = useLocalStorage("farmn:user", null);
 
   const updateUser = (user: User) => {
     setUser(user);

@@ -9,7 +9,7 @@ const FarmContext = React.createContext<{
 }>(null);
 
 export const FarmProvider = (props) => {
-  const [farm, setFarm, removeFarm] = useLocalStorage("my-app:farm", null);
+  const [farm, setFarm, removeFarm] = useLocalStorage("farmn:farm", null);
 
   const updateFarm = (user: string) => {
     setFarm(user);

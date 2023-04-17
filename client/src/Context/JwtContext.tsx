@@ -8,7 +8,7 @@ const JwtContext = React.createContext<{
 }>(null);
 
 export const JwtProvider = (props) => {
-  const [jwt, setJwt, removeJwt] = useLocalStorage("my-app:jwt", null);
+  const [jwt, setJwt, removeJwt] = useLocalStorage("farmn:jwt", null);
 
   const updateJwt = (user: string) => {
     setJwt(user);

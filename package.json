@@ -1,15 +1,15 @@
 {
-  "name": "my-app",
+  "name": "farmn",
   "version": "1.0.0",
   "description": "My awesome full-stack web application",
   "main": "server/src/index.ts",
   "scripts": {
+    "start": "concurrently \"webpack serve --config webpack.config.js --mode development --hot --open\" \"nodemon ./server/src/index.ts\" \"npm run mongo-start\"",
+    "mongo-start": "mongod --dbpath=/Users/brandonhadler/mongodb-data",
     "build": "webpack --mode production",
-    "client:dev": "webpack-dev-server --mode development --config ./webpack.config.js --hot --open",
-    "server:dev": "nodemon ./server/src/index.ts",
-    "start": "node ./dist/server/index.js",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+    "test": "echo \"No tests yet\" && exit 0",
+    "lint": "eslint src/**/*.{ts,tsx} --quiet",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix"
   },
   "keywords": [
     "full-stack",
@@ -54,7 +54,10 @@
     "@types/react-dom": "^18.0.11",
     "autoprefixer": "^10.4.13",
     "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^8.0.1",
     "css-loader": "^6.7.3",
+    "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.20",

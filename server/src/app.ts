@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import path from "path";
+require("dotenv").config();
 require("./db/mongoose");
 const { userRouter } = require("./routers/user-router");
 const { taskRouter } = require("./routers/task-router");

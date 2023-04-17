@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./client/src/index.tsx",
@@ -40,11 +41,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./client/public/index.html",
     }),
+    new Dotenv({
+      path: path.resolve(__dirname, ".env"),
+    }),
   ],
   devServer: {
     static: path.join(__dirname, "dist"),
     compress: true,
-    port: 3000,
+    port: process.env.CLIENT_PORT || 3000,
     historyApiFallback: true,
   },
 };
