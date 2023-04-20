@@ -44,3 +44,14 @@ export interface Livestock {
   children: Livestock[];
   farmId: mongodb.ObjectId;
 }
+
+export interface CreateFarmBody {
+  name: string;
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  country: string;
+  phone: string;
+  email: string;
+}

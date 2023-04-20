@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Button from "@mui/material/Button";
-import AddHomeIcon from "@mui/icons-material/AddHome";
-import { AddFarm } from "./Farm/AddFarm";
 import { useUser } from "../Context/UserContext";
 import { useFarm } from "../Context/FarmContext";
 import { useJwt } from "../Context/JwtContext";
+import { CreateFarmBody } from "../Types";
+import { FarmForm } from "./Farm/FarmForm";
+import { AddFarm } from "./Farm/AddFarm";
 
 export const Home: React.FC = () => {
   const { jwt } = useJwt();
-  const { user } = useUser();
+  const { user, updateUser } = useUser();
   const { farm, updateFarm } = useFarm();
   const [showAddFarm, setShowAddFarm] = React.useState<boolean>(!farm);
 
