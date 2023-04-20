@@ -3,8 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
 import { useFarm } from "../Context/FarmContext";
 import { useJwt } from "../Context/JwtContext";
-import { CreateFarmBody } from "../Types";
-import { FarmForm } from "./Farm/FarmForm";
 import { AddFarm } from "./Farm/AddFarm";
 
 export const Home: React.FC = () => {
