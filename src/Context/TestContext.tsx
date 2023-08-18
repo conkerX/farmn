@@ -2,7 +2,7 @@ import * as React from "react";
 
 const TestContext = React.createContext(null);
 
-const TestProvider = () => {
+export const TestProvider = (props: any) => {
   const [test, setTest] = React.useState();
 
   const value = [test, setTest];
@@ -10,7 +10,7 @@ const TestProvider = () => {
   return <TestContext.Provider value={value} />;
 };
 
-const useTest = () => {
+export const useTest = () => {
   const context = React.useContext(TestContext);
 
   if (!context) {

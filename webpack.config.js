@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
-  entry: "./client/src/index.tsx",
+  entry: "./src/index.tsx",
   mode: "development",
   devtool: "inline-source-map",
   output: {
@@ -39,7 +39,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./client/public/index.html",
+      template: "./public/index.html",
     }),
     new Dotenv({
       path: path.resolve(__dirname, ".env"),
